@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NumberPicker : MonoBehaviour
 {
+    /// <summary>
+    /// Returns a random integer between 0 and 999
+    /// </summary>
+    /// <returns></returns>
     public int PickRandomNumber()
     {
-        int nmbr = Random.Range(0, 999999999);
+        int number = Random.Range(0, 1000);
         // No he querido usar "int.MaxValue" para evitar numeros excesivamente largos y complejos
-        return nmbr;
+        return number;
     }
 }

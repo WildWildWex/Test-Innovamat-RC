@@ -1,26 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+public enum Answer { Right, FirstWrong, SecondWrong }
 
 public class AnswerChecker : MonoBehaviour
 {
     private int incorrectCounter;
 
-    public bool IsEqual(int currentNmbr, int value)
+    public Answer IsEqual(int currentNmbr, int value)
     {
         if (value == currentNmbr)
-            return true;
-
-        if(value != currentNmbr && incorrectCounter > 0)
         {
             ResetCounter();
-            return false;
+            return Answer.Right;
         }
 
-        // Give feedback to manager 
-        // first wrong answer
+        if (value != currentNmbr && incorrectCounter > 0)
+        {
+            ResetCounter();
+            return Answer.SecondWrong;
+        }
+
         incorrectCounter++;
-        return false;
+        return Answer.FirstWrong;
         
     }
 
@@ -29,3 +30,4 @@ public class AnswerChecker : MonoBehaviour
         incorrectCounter = 0;
     }
 }
+
