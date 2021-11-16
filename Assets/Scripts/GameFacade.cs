@@ -29,6 +29,7 @@ public class GameFacade : MonoBehaviour
     private void Start()
     {
         buttonsSpawner.InitializeAllButtons();
+        answerChecker.ResetCounter();
         GetNewSentence();
     }
     #endregion
@@ -89,6 +90,11 @@ public class GameFacade : MonoBehaviour
                 StartCoroutine(SecondWrongAnswer());
                 break;
         }
+    }
+
+    public int GetAmountOfAnswers()
+    {
+        return buttonsSpawner.buttonControllers.Length;
     }
 
     private IEnumerator RightAnswer()

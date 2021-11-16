@@ -14,20 +14,20 @@ public class AnswerChecker : MonoBehaviour
             return Answer.Right;
         }
 
-        if (value != currentNmbr && incorrectCounter > 0)
+        if (value != currentNmbr && incorrectCounter > 1)
         {
-            ResetCounter();
-            return Answer.SecondWrong;
+            incorrectCounter--;
+            return Answer.FirstWrong;
         }
 
-        incorrectCounter++;
-        return Answer.FirstWrong;
-        
+        ResetCounter();
+        return Answer.SecondWrong;
     }
 
-    private void ResetCounter()
+    public void ResetCounter()
     {
-        incorrectCounter = 0;
+        incorrectCounter = GameFacade.instance.GetAmountOfAnswers() -1;
     }
+
 }
 
